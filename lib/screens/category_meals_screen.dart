@@ -12,7 +12,7 @@ class CatergoryMealsScreen extends StatefulWidget {
 }
 
 class _CatergoryMealsScreenState extends State<CatergoryMealsScreen> {
-  String categoryTitle = '';
+  late String categoryTitle;
   List<Meal> displayedMeals = [];
   bool _loadedInitData = false;
 
@@ -26,7 +26,7 @@ class _CatergoryMealsScreenState extends State<CatergoryMealsScreen> {
     if (!_loadedInitData) {
       final routeArgs =
           ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-      String categoryTitle = routeArgs['title'] as String;
+      categoryTitle = routeArgs['title'] as String;
       final categoryId = routeArgs['id'];
       displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
@@ -36,11 +36,11 @@ class _CatergoryMealsScreenState extends State<CatergoryMealsScreen> {
     }
   }
 
-  void _removeMeal(String mealId) {
-    setState(() {
-      displayedMeals.removeWhere((meal) => meal.id == mealId);
-    });
-  }
+  // void _removeMeal(String mealId) {
+  //   setState(() {
+  //     displayedMeals.removeWhere((meal) => meal.id == mealId);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,6 @@ class _CatergoryMealsScreenState extends State<CatergoryMealsScreen> {
             duration: displayedMeals[index].duration,
             affordability: displayedMeals[index].affordability,
             complexity: displayedMeals[index].complexity,
-            removeItem: _removeMeal,
           );
         },
         itemCount: displayedMeals.length,
