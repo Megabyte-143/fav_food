@@ -1,4 +1,3 @@
-
 enum Complexity {
   Simple,
   Challenging,

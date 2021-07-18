@@ -1,5 +1,7 @@
-import '../screens/filters_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/filters_screen.dart';
+
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTitle(String title, IconData icon, Function tapHandler) {
